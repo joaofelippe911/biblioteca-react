@@ -1,15 +1,23 @@
 "use client"
 
+import { Loading } from "@/components/Loading";
+import { ToastComponent } from "@/components/Toast";
 import axios from "axios";
-import { useCallback, useRef } from "react"
+import { setCookie } from 'nookies'
+import { useCallback, useRef, useState } from "react"
 
 export default function Login() {
 
     const refForm = useRef<any>();
+    const [loading, setLoading] = useState(false)
+    const [toast, setToast] = useState(false)
+    const [toastMessage, setToastMessage] = useState('')
+
 
     const submitForm = useCallback((e: any) => {
         e.preventDefault();
         if (refForm.current.checkValidity()) {
+            setLoading(true)
             const objSalvar = {
                 email: e.target.email.value,
                 senha: e.target.senha.value,
@@ -19,10 +27,25 @@ export default function Login() {
                 objSalvar
             )
                 .then((resposta) => {
+                    console.log(resposta.data)
 
+                    setCookie(
+                        undefined,
+                        'shoopypainel.token',
+                        resposta.data.token,
+                        {
+                            maxAge: 60 * 60 * 24 * 30,
+                            path: '/'
+                        }
+                    )
+
+                    setLoading(false)
                 })
                 .catch((err) => {
-
+                    setLoading(false)
+                    setToast(true)
+                    setToastMessage('Dados invalidos')
+                    console.log(err)
                 })
 
         } else {
@@ -34,6 +57,15 @@ export default function Login() {
 
     return (
         <>
+            <Loading loading={loading} />
+            <ToastComponent
+                show={toast}
+                message={toastMessage}
+                colors="danger"
+                onClose={() => {setToast(false)}}
+            />
+
+            
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
