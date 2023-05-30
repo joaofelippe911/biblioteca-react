@@ -3,10 +3,13 @@
 import { Loading } from "@/components/Loading";
 import { ToastComponent } from "@/components/Toast";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { setCookie } from 'nookies'
 import { useCallback, useRef, useState } from "react"
 
 export default function Login() {
+
+    const router = useRouter();
 
     const refForm = useRef<any>();
     const [loading, setLoading] = useState(false)
@@ -38,6 +41,8 @@ export default function Login() {
                             path: '/'
                         }
                     )
+
+                    router.push('/dashboard')
 
                     setLoading(false)
                 })
