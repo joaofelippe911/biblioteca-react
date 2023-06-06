@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
                 const token = jwt.sign(objUsuario, '123456', {
                     // expiresIn: "1d"  
-                    expiresIn: 60 * 1
+                    expiresIn: 60 * 30
                 })
 
                 return NextResponse.json({ token: token })

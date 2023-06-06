@@ -2,8 +2,15 @@ import { cookies } from 'next/headers'
 import { LayoutDashboard } from "@/components/LayoutDashboard";
 import { verificaTokenExpirou } from '@/services/Token';
 import { redirect } from 'next/navigation';
+import PageCategoria from '@/components/PageCategoria';
+import axios from 'axios';
 
-export default function Dashboard() {
+interface interCategoria {
+    "id": number,
+    "categoria": string
+}
+
+export default async function Categoria() {
 
     const cookie = cookies();
 
@@ -13,12 +20,16 @@ export default function Dashboard() {
         redirect('/login')
     }
 
+    let categoria: { data: Array<interCategoria> } = { data: [] }
+
+    categoria = await axios.get('http://localhost:3001/categorias')
+
     return (
         <LayoutDashboard
-            active='dashboard'
+            active='categoria'
             token={token.value}
         >
-            <h1>Dashboard</h1>
+            <PageCategoria dados={categoria.data} />
         </LayoutDashboard>
     )
 }

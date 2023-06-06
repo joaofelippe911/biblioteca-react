@@ -1,11 +1,14 @@
+import { validaPermissao } from "@/services/Token"
+import Link from "next/link"
 import { ReactNode } from "react"
 
 interface interfProps {
     children: ReactNode
-    active?: string
-    token?: string | undefined
+    active: string
+    token: string | undefined
 }
 export const LayoutDashboard = (props: interfProps) => {
+
     return (
         <>
             <header
@@ -44,14 +47,35 @@ export const LayoutDashboard = (props: interfProps) => {
                         <div className="position-sticky pt-3">
                             <ul className="nav flex-column">
                                 <li className="nav-item">
-                                    <a
-                                        className={`nav-link`}
+                                    <Link
+                                        className={`nav-link ${props.active === 'dashboard' && 'active'}`}
                                         href={'/dashboard'}
                                     >
                                         <span data-feather="home"></span>
                                         Dashboard
-                                    </a>
+                                    </Link>
                                 </li>
+                                <li className="nav-item">
+                                    <Link
+                                        className={`nav-link ${props.active === 'categoria' && 'active'}`}
+                                        href={'/categoria'}
+                                    >
+                                        <span data-feather="home"></span>
+                                        Categoria
+                                    </Link>
+                                </li>
+                                {
+                                    validaPermissao(props.token, ['admin']) &&
+                                    <li className="nav-item">
+                                        <Link
+                                            className={`nav-link ${props.active === 'usuarios' && 'active'}`}
+                                            href={'/usuarios'}
+                                        >
+                                            <span data-feather="home"></span>
+                                            Usuarios
+                                        </Link>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </nav>

@@ -2,8 +2,9 @@ import { cookies } from 'next/headers'
 import { LayoutDashboard } from "@/components/LayoutDashboard";
 import { verificaTokenExpirou } from '@/services/Token';
 import { redirect } from 'next/navigation';
+import PageFormCategoria from '@/components/PageFormCategoria';
 
-export default function Dashboard() {
+export default async function AddCategoria({params}: any) {
 
     const cookie = cookies();
 
@@ -15,10 +16,10 @@ export default function Dashboard() {
 
     return (
         <LayoutDashboard
-            active='dashboard'
+            active='categoria'
             token={token.value}
         >
-            <h1>Dashboard</h1>
+            <PageFormCategoria parametro={params.id} />
         </LayoutDashboard>
     )
 }
