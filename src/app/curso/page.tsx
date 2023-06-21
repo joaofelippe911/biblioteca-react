@@ -25,7 +25,13 @@ export default async function Curso() {
 
     let curso: { data: Array<interCurso> } = { data: [] }
 
-    curso = await axios.get('http://localhost:3001/categorias')
+    try {
+        curso = await axios.get('http://127.0.0.1:8000/api/cursos');
+        console.log({curso})
+    } catch (error) {
+        console.log({error})
+    }
+
 
     return (
         <LayoutDashboard
