@@ -64,6 +64,15 @@ export const LayoutDashboard = (props: interfProps) => {
                                         Categoria
                                     </Link>
                                 </li>
+                                <li className="nav-item">
+                                    <Link
+                                        className={`nav-link ${props.active === 'curso' && 'active'}`}
+                                        href={'/curso'}
+                                    >
+                                        <span data-feather="home"></span>
+                                        Curso
+                                    </Link>
+                                </li>
                                 {
                                     validaPermissao(props.token, ['admin']) &&
                                     <li className="nav-item">

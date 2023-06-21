@@ -7,37 +7,50 @@ export async function POST(req: Request) {
 
     try {
 
-        let usuario = await axios.get(
-            "http://localhost:3001/usuarios?email="
-            +
-            email
-        )
+        // let usuario = await axios.get(
+        //     "http://localhost:3001/usuarios?email="
+        //     +
+        //     email
+        // )
 
-        console.log(usuario)
+        // console.log(usuario)
 
-        if (usuario.data.length === 1) {
+        // if (usuario.data.length === 1) {
 
-            if (usuario.data[0].senha === senha) {
+        //     if (usuario.data[0].senha === senha) {
 
-                let objUsuario = usuario.data[0]
+        //         let objUsuario = usuario.data[0]
 
-                delete objUsuario.senha
+        //         delete objUsuario.senha
 
-                console.log(objUsuario)
+        //         console.log(objUsuario)
 
-                const token = jwt.sign(objUsuario, '123456', {
-                    // expiresIn: "1d"  
-                    expiresIn: 60 * 30
-                })
+        //         const token = jwt.sign(objUsuario, '123456', {
+        //             // expiresIn: "1d"  
+        //             expiresIn: 60 * 30
+        //         })
 
-                return NextResponse.json({ token: token })
+        //         return NextResponse.json({ token: token })
+        //     }
+
+        //     return new Response('Dados incorretos', {
+        //         status: 401
+        //     })
+        // }
+
+        if(email === "admin@gmail.com" && senha === "123") {
+            let objUsuario = {
+                email
             }
 
-            return new Response('Dados incorretos', {
-                status: 401
+            const token = jwt.sign(objUsuario, '123456', {
+                // expiresIn: "1d"
+                expiresIn: 60 * 30
             })
-
+        
+            return NextResponse.json({ token: token })
         }
+
         return new Response('Dados incorretos', {
             status: 401
         })
@@ -49,6 +62,4 @@ export async function POST(req: Request) {
         })
         // console.log(error)
     }
-
-    return NextResponse.json({ data: "Rota get" })
 }
