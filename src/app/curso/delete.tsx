@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
+interface interfCurso  {
+  id: number;
+  nome: string;
+  coordenador: string;
+  duracao: number;
+}
+
 export default function Create() {
   const [name, setName] = useState('');
   const [coordenador, setCoordenador] = useState('');
   const [duracao, setDuracao] = useState('');
-  const [cursos, setCursos] = useState([]);
+  const [cursos, setCursos] = useState<Array<interfCurso>>([]);
 
   const router = useRouter();
 
@@ -53,7 +60,7 @@ export default function Create() {
       <ul>
         {cursos.map((curso) => (
           <li key={curso.id}>
-            {curso.name} - {curso.coordenador} - {curso.duracao}
+            {curso.nome} - {curso.coordenador} - {curso.duracao}
             <button onClick={() => handleDelete(curso.id)}>Excluir</button>
           </li>
         ))}
