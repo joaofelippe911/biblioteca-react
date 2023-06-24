@@ -10,6 +10,7 @@ export default function Create() {
   const [uf, setUf] = useState('');
   const [telefone, setTelefone] = useState('');
   const [curso, setCurso] = useState('');
+  
   const router = useRouter();
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
