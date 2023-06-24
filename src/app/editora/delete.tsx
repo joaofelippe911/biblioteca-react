@@ -11,7 +11,7 @@ interface interfEditora  {
   telefone:string;
 }
 
-export default function Create() {
+export default function Delete() {
   const [nome, setName] = useState('');
   const [endereco, setEndereco] = useState('');
   const [cidade, setCidade] = useState('');

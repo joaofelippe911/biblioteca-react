@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 export default function Create() {
-  const [name, setName] = useState('');
+  const [nome, setNome] = useState('');
   const [endereco, setEndereco] = useState('');
   const [cidade, setCidade] = useState('');
   const [uf, setUf] = useState('');
@@ -15,7 +15,7 @@ export default function Create() {
 
     try {
       await axios.post('http://127.0.0.1:8000/api/editoras', {
-        name,
+        nome,
         endereco,
         cidade,
         uf,
@@ -32,9 +32,9 @@ export default function Create() {
     <div>
       <h1>Cadastrar Editora</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Nome:</label>
-        <input type="text" id="name" value={name}
-          onChange={event => setName(event.target.value)}
+        <label htmlFor="nome">Nome:</label>
+        <input type="text" id="name" value={nome}
+          onChange={event => setNome(event.target.value)}
         />
 
         <label htmlFor="endereco">Endereço:</label>

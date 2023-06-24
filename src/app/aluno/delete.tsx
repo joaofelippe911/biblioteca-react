@@ -2,34 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-interface interfEditora  {
+interface interfAluno  {
   id: number;
+  ra: number
   nome: string;
   endereco: string;
   cidade: string;
   uf: string;
-  telefone:string;
+  telefone: string;
+  curso: string
 }
 
-export default function Create() {
+export default function Delete() {;
+  const [ra, setRa] = useState('')  
   const [nome, setName] = useState('');
   const [endereco, setEndereco] = useState('');
   const [cidade, setCidade] = useState('');
   const [uf, setUf] = useState('');
   const [telefone, setTelefone] = useState('')
+  const [Curso, setCurso] = useState('')
 
-  const [editoras, setEditoras] = useState<Array<interfEditora>>([]);
+  const [alunos, setAlunos] = useState<Array<interfAluno>>([]);
 
   const router = useRouter();
 
   useEffect(() => {
-    getEditoras();
+    getAlunos();
   }, []);
 
-  const getEditoras = async () => {
+  const getAlunos = async () => {
     try {
       const response = await axios.get('http://127.0.0.1:8000/api/editoras');
-      setEditoras(response.data);
+      setAlunos(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -39,12 +43,14 @@ export default function Create() {
     e.preventDefault();
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/editoras', {
+      await axios.post('http://127.0.0.1:8000/api/alunos', {
+        ra,
         nome,
         endereco,
         cidade,
         uf,
         telefone,
+        Curso
       });
       router.push('/');
     } catch (error) {
@@ -54,8 +60,8 @@ export default function Create() {
 
   const handleDelete = async (id: any) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/editoras/${id}`);
-      getEditoras();
+      await axios.delete(`http://127.0.0.1:8000/api/alunos/${id}`);
+      getAlunos();
     } catch (error) {
       console.error(error);
     }
@@ -63,12 +69,12 @@ export default function Create() {
 
   return (
     <div>
-      <h2>Lista de Editoras</h2>
+      <h2>Lista de Alunos</h2>
       <ul>
-        {editoras.map((editora) => (
-          <li key={editora.id}>
-            {editora.nome} - {editora.endereco} - {editora.cidade} - {editora.uf} - {editora.telefone}
-            <button onClick={() => handleDelete(editora.id)}>Excluir</button>
+        {alunos.map((aluno) => (
+          <li key={aluno.id}>
+            {aluno.ra} - {aluno.nome} - {aluno.endereco} - {aluno.cidade} - {aluno.uf} - {aluno.telefone} - {aluno.curso}
+            <button onClick={() => handleDelete(aluno.id)}>Excluir</button>
           </li>
         ))}
       </ul>

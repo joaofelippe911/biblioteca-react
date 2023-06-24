@@ -5,7 +5,11 @@ import { useRouter } from "next/navigation"
 import { useCallback, useState } from "react";
 
 interface interProps {
-    dados: Array<{ id: number, nome: string, endereco: string, cidade: string, uf: string, telefone: number }>
+    dados: Array<{ id: number, 
+        nome: string, 
+        endereco: string, 
+        cidade: string, uf: string, 
+        telefone: number }>
 }
 
 export default function PageEditora(props: interProps) {
