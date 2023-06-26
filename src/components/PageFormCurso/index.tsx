@@ -108,7 +108,7 @@ export default function PageFormCurso(props: interProps) {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>
-                        Duração
+                        Duração (semestres)
                     </Form.Label>
                     <Form.Control type="number" id="duracao" name="duracao" />
                 </Form.Group>
