@@ -20,10 +20,12 @@ export default function PageCurso(props: interProps) {
     }
     >>(props.dados)
 
-    const excluirCategoria = useCallback((id: number) => {
+    const excluirCurso = useCallback((id: number) => {
         axios.delete('http://localhost:8000/api/cursos/'+id)
         .then((res) => {
-            
+            setDados(prevState => prevState.filter((curso) => curso.id !== id));
+        }).catch((err) => {
+            console.log(err);
         })
     }, [])
 
@@ -77,7 +79,7 @@ export default function PageCurso(props: interProps) {
                                             className="btn btn-danger"
                                             type="button"
                                             onClick={() => {
-                                                excluirCategoria(element.id)
+                                                excluirCurso(element.id)
                                             }}
                                         >
                                             Excluir
