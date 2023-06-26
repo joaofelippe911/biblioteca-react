@@ -5,12 +5,6 @@ import { redirect } from 'next/navigation';
 import axios from 'axios';
 import PageCurso from '@/components/PageCurso';
 
-interface interCurso {
-    "id": number;
-    "nome": string;
-    "coordenador": string;
-    "duracao": number;
-}
 
 export default async function Curso() {
 

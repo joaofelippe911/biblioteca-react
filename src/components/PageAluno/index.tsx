@@ -16,14 +16,14 @@ interface interAluno {
 }
 
 export default function PageAluno() {
-    const [cursos, setCursos] = useState<interAluno[]>([])
+    const [alunos, setAlunos] = useState<interAluno[]>([])
 
     const router = useRouter();
 
     const excluirAluno = useCallback((id: number) => {
         axios.delete('http://127.0.0.1:8000/api/alunos/'+id)
         .then((res) => {
-            setCursos(prevState => prevState.filter((aluno) => aluno.id !== id));
+            setAlunos(prevState => prevState.filter((aluno) => aluno.id !== id));
         }).catch((err) => {
             console.log(err);
         })
@@ -32,12 +32,14 @@ export default function PageAluno() {
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/api/alunos')
             .then((res) => {
-                setCursos(res.data);
+                setAlunos(res.data);
             })
             .catch((error) => {
                 console.log(error);
             })
     }, []);
+
+    console.log(alunos);
 
     return (
         <>
@@ -66,7 +68,7 @@ export default function PageAluno() {
                 </thead>
                 <tbody>
                     {
-                        cursos.map((element) => {
+                        alunos.map((element) => {
                             return (
                                 <tr key={element.id}>
                                     <td>
