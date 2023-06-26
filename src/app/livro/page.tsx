@@ -5,24 +5,24 @@ import LivroDelete from './delete';
 import LivroCreate from './create';
 
 const LivroPage = () => {
-  const [livros, setLivros] = useState([]);
+  // const [livros, setLivros] = useState([]);
 
-  useEffect(() => {
-    const fetchLivros = async () => {
-      try {
-        const response = await axios.get('http://127.0.0.1:8000/api/livros');
-        setLivros(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchLivros = async () => {
+  //     try {
+  //       const response = await axios.get('http://127.0.0.1:8000/api/livros');
+  //       // setLivros(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchLivros();
-  }, []);
+  //   fetchLivros();
+  // }, []);
 
   return (
     <div>
-      <h1>Livros</h1>
+      {/* <h1>Livros</h1>
 
       <h2>Lista de Livros</h2>
       <ul>
@@ -48,7 +48,7 @@ const LivroPage = () => {
         <div key={livro.id}>
           <LivroDelete livro={livro} />
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

@@ -11,84 +11,84 @@ interface interReserva {
 }
 
 const ReservaPage = () => {
-  const [reservas, setReservas] = useState<interReserva[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [newReserva, setNewReserva] = useState<interReserva>({
-    id: 0,
-    aluno: '',
-    livro: '',
-    dataInicio: '',
-    dataFim: '',
-    observacao: '',
-  });
-  const [editReserva, setEditReserva] = useState<interReserva | null>(null);
+  // const [reservas, setReservas] = useState<interReserva[]>([]);
+  // const [loading, setLoading] = useState(true);
+  // const [newReserva, setNewReserva] = useState<interReserva>({
+  //   id: 0,
+  //   aluno: '',
+  //   livro: '',
+  //   dataInicio: '',
+  //   dataFim: '',
+  //   observacao: '',
+  // });
+  // const [editReserva, setEditReserva] = useState<interReserva | null>(null);
 
-  useEffect(() => {
-    fetchReservas();
-  }, []);
+  // useEffect(() => {
+  //   fetchReservas();
+  // }, []);
 
-  const fetchReservas = async () => {
-    try {
-      const response = await axios.get<interReserva[]>('http://127.0.0.1:8000/api/reservas');
-      setReservas(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error('Erro ao obter as reservas:', error);
-      setLoading(false);
-    }
-  };
+  // const fetchReservas = async () => {
+  //   try {
+  //     const response = await axios.get<interReserva[]>('http://127.0.0.1:8000/api/reservas');
+  //     setReservas(response.data);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error('Erro ao obter as reservas:', error);
+  //     setLoading(false);
+  //   }
+  // };
 
-  const createReserva = async () => {
-    try {
-      await axios.post('http://127.0.0.1:8000/api/reservas', newReserva);
-      fetchReservas();
-      setNewReserva({
-        id: 0,
-        aluno: '',
-        livro: '',
-        dataInicio: '',
-        dataFim: '',
-        observacao: '',
-      });
-    } catch (error) {
-      console.error('Erro ao criar a reserva:', error);
-    }
-  };
+  // const createReserva = async () => {
+  //   try {
+  //     await axios.post('http://127.0.0.1:8000/api/reservas', newReserva);
+  //     fetchReservas();
+  //     setNewReserva({
+  //       id: 0,
+  //       aluno: '',
+  //       livro: '',
+  //       dataInicio: '',
+  //       dataFim: '',
+  //       observacao: '',
+  //     });
+  //   } catch (error) {
+  //     console.error('Erro ao criar a reserva:', error);
+  //   }
+  // };
 
-  const deleteReserva = async (id: number) => {
-    try {
-      await axios.delete(`http://127.0.0.1:8000/api/reservas/${id}`);
-      fetchReservas();
-    } catch (error) {
-      console.error('Erro ao excluir a reserva:', error);
-    }
-  };
+  // const deleteReserva = async (id: number) => {
+  //   try {
+  //     await axios.delete(`http://127.0.0.1:8000/api/reservas/${id}`);
+  //     fetchReservas();
+  //   } catch (error) {
+  //     console.error('Erro ao excluir a reserva:', error);
+  //   }
+  // };
 
-  const handleEdit = (reserva: interReserva) => {
-    setEditReserva(reserva);
-  };
+  // const handleEdit = (reserva: interReserva) => {
+  //   setEditReserva(reserva);
+  // };
 
-  const handleCancelEdit = () => {
-    setEditReserva(null);
-  };
+  // const handleCancelEdit = () => {
+  //   setEditReserva(null);
+  // };
 
-  const handleUpdate = async (reserva: interReserva) => {
-    try {
-      await axios.put(`http://127.0.0.1:8000/api/reservas/${reserva.id}`, reserva);
-      fetchReservas();
-      setEditReserva(null);
-    } catch (error) {
-      console.error('Erro ao atualizar a reserva:', error);
-    }
-  };
+  // const handleUpdate = async (reserva: interReserva) => {
+  //   try {
+  //     await axios.put(`http://127.0.0.1:8000/api/reservas/${reserva.id}`, reserva);
+  //     fetchReservas();
+  //     setEditReserva(null);
+  //   } catch (error) {
+  //     console.error('Erro ao atualizar a reserva:', error);
+  //   }
+  // };
 
-  if (loading) {
-    return <p>Carregando...</p>;
-  }
+  // if (loading) {
+  //   return <p>Carregando...</p>;
+  // }
 
   return (
     <div>
-      <h1>Reservas</h1>
+      {/* <h1>Reservas</h1>
 
       <table>
         <thead>
@@ -170,7 +170,7 @@ const ReservaPage = () => {
         />
 
         <button onClick={createReserva}>Criar</button>
-      </form>
+      </form> */}
     </div>
   );
 };

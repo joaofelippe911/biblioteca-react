@@ -33,7 +33,6 @@ export default async function Editora() {
         console.log({error})
     }
 
-<<<<<<< HEAD
 
     return (
         <LayoutDashboard
@@ -44,50 +43,3 @@ export default async function Editora() {
         </LayoutDashboard>
     )
 }
-=======
-interface interfEditora  {
-  id: number;
-  nome: string;
-  endereco: string;
-  cidade: string;
-  uf: string;
-  telefone:string;
-}
-
-const LivrosPage = () => {
-  const [livros, setLivros] = useState([]);
-  const [titulo, setTitulo] = useState('');
-  const [autor, setAutor] = useState('');
-
-  const [editoras, setEditoras] = useState<Array<interfEditora>>([]);
-
-  
-
-
-  const handleTituloChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitulo(e.target.value);
-  };
-
-  const handleAutorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setAutor(e.target.value);
-  };
-
-  const handleAddLivro = () => {
-    const novoLivro = {
-      id: new Date().getTime(),
-      titulo,
-      autor,
-    };
-    setLivros([...livros, novoLivro]);
-    setTitulo('');
-    setAutor('');
-  };
-
-  const handleDeleteLivro = (id: number) => {
-    const novosLivros = livros.filter((livro) => livro.id !== id);
-    setLivros(novosLivros);
-  };
-
-}
- 
->>>>>>> 0b8a4ec (Crud Reserva Finalizado)
