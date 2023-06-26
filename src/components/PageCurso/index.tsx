@@ -76,7 +76,7 @@ export default function PageCurso() {
                                             className="btn btn-primary"
                                             type="button"
                                             onClick={() => {
-                                                router.push('/curso/' + element.id)
+                                                router.push('/cursos/' + element.id)
                                             }}
                                         >
                                             Editar

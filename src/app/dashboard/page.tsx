@@ -7,7 +7,7 @@ export default function Dashboard() {
 
     const cookie = cookies();
 
-    const token = cookie.get('shoopypainel.token')
+    const token = cookie.get('biblioteca-react.token')
 
     if (!token?.value || verificaTokenExpirou(token.value)) {
         redirect('/login')

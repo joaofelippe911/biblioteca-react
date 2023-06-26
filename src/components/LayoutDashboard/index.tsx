@@ -59,7 +59,7 @@ export const LayoutDashboard = (props: interfProps) => {
                                 <li className="nav-item">
                                     <Link
                                         className={`nav-link ${props.active === 'curso' && 'active'}`}
-                                        href={'/cursos'}
+                                        href={'/curso'}
                                     >
                                         <span data-feather="home"></span>
                                         Cursos
@@ -69,7 +69,7 @@ export const LayoutDashboard = (props: interfProps) => {
                                 <li className="nav-item">
                                     <Link
                                         className={`nav-link ${props.active === 'aluno' && 'active'}`}
-                                        href={'/alunos'}
+                                        href={'/aluno'}
                                     >
                                         <span data-feather="home"></span>
                                         Alunos
@@ -78,7 +78,7 @@ export const LayoutDashboard = (props: interfProps) => {
 
                                     <Link
                                         className={`nav-link ${props.active === 'reserva' && 'active'}`}
-                                        href={'/reservas'}
+                                        href={'/reserva'}
                                     >
                                         <span data-feather="home"></span>
                                         Reservas
@@ -86,7 +86,7 @@ export const LayoutDashboard = (props: interfProps) => {
 
                                     <Link
                                         className={`nav-link ${props.active === 'livro' && 'active'}`}
-                                        href={'/livros'}
+                                        href={'/livro'}
                                     >
                                         <span data-feather="home"></span>
                                         Livros
@@ -102,7 +102,7 @@ export const LayoutDashboard = (props: interfProps) => {
 
                                     <Link
                                         className={`nav-link ${props.active === 'editora' && 'active'}`}
-                                        href={'/editoras'}
+                                        href={'/editora'}
                                     >
                                         <span data-feather="home"></span>
                                         Editoras
