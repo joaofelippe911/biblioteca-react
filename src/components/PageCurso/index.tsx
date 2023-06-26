@@ -58,7 +58,7 @@ export default function PageCurso(props: interProps) {
                     {
                         dados.map((element) => {
                             return (
-                                <tr>
+                                <tr key={element.id}>
                                     <td>
                                         {element.id}
                                     </td>

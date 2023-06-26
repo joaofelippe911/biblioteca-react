@@ -26,7 +26,6 @@ export default async function Curso() {
 
     try {
         curso = await axios.get('http://127.0.0.1:8000/api/cursos');
-        console.log({curso})
     } catch (error) {
         console.log({error})
     }

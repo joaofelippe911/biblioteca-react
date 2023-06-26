@@ -3,8 +3,9 @@ import { LayoutDashboard } from "@/components/LayoutDashboard";
 import { verificaTokenExpirou } from '@/services/Token';
 import { redirect } from 'next/navigation';
 import PageFormCategoria from '@/components/PageFormCategoria';
+import PageFormCurso from '@/components/PageFormCurso';
 
-export default async function AddCategoria({params}: any) {
+export default async function AddCurso({params}: any) {
 
     const cookie = cookies();
 
@@ -16,10 +17,10 @@ export default async function AddCategoria({params}: any) {
 
     return (
         <LayoutDashboard
-            active='categoria'
+            active='curso'
             token={token.value}
         >
-            <PageFormCategoria parametro={params.id} />
+            <PageFormCurso parametro={params.id} />
         </LayoutDashboard>
     )
 }
