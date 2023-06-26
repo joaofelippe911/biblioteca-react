@@ -55,24 +55,59 @@ export const LayoutDashboard = (props: interfProps) => {
                                         Dashboard
                                     </Link>
                                 </li>
-                                <li className="nav-item">
-                                    <Link
-                                        className={`nav-link ${props.active === 'categoria' && 'active'}`}
-                                        href={'/categoria'}
-                                    >
-                                        <span data-feather="home"></span>
-                                        Categoria
-                                    </Link>
-                                </li>
+                               
                                 <li className="nav-item">
                                     <Link
                                         className={`nav-link ${props.active === 'curso' && 'active'}`}
-                                        href={'/curso'}
+                                        href={'/cursos'}
                                     >
                                         <span data-feather="home"></span>
-                                        Curso
+                                        Cursos
                                     </Link>
                                 </li>
+
+                                <li className="nav-item">
+                                    <Link
+                                        className={`nav-link ${props.active === 'aluno' && 'active'}`}
+                                        href={'/alunos'}
+                                    >
+                                        <span data-feather="home"></span>
+                                        Alunos
+                                    </Link>
+                                </li>
+
+                                    <Link
+                                        className={`nav-link ${props.active === 'reserva' && 'active'}`}
+                                        href={'/reservas'}
+                                    >
+                                        <span data-feather="home"></span>
+                                        Reservas
+                                    </Link>
+
+                                    <Link
+                                        className={`nav-link ${props.active === 'livro' && 'active'}`}
+                                        href={'/livros'}
+                                    >
+                                        <span data-feather="home"></span>
+                                        Livros
+                                    </Link>
+
+                                    <Link
+                                        className={`nav-link ${props.active === 'autor' && 'active'}`}
+                                        href={'/autor'}
+                                    >
+                                        <span data-feather="home"></span>
+                                        Autores
+                                    </Link>
+
+                                    <Link
+                                        className={`nav-link ${props.active === 'editora' && 'active'}`}
+                                        href={'/editoras'}
+                                    >
+                                        <span data-feather="home"></span>
+                                        Editoras
+                                    </Link>
+
                                 {
                                     validaPermissao(props.token, ['admin']) &&
                                     <li className="nav-item">

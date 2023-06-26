@@ -34,7 +34,7 @@ export default function Login() {
 
                     setCookie(
                         undefined,
-                        'shoopypainel.token',
+                        'biblioteca-react.token',
                         resposta.data.token,
                         {
                             maxAge: 60 * 60 * 24 * 30,
@@ -95,7 +95,7 @@ export default function Login() {
                             Login
                         </h1>
                         <p>
-                            Tem uma pergunta/problema? Por favor, escreva aqui e retornaremos assim que possível.
+                            Realize o login 
                         </p>
                     </div>
                     <hr />
