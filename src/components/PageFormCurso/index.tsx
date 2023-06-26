@@ -24,8 +24,6 @@ export default function PageFormCurso(props: interProps) {
             setEditar(true)
             axios.get('http://127.0.0.1:8000/api/cursos/' + idQuery).then(
                 (res) => {
-                    console.log(res.data);
-
                     refForm.current['id'].value = res.data.id;
                     refForm.current['nome'].value = res.data.nome;
                     refForm.current['coordenador'].value = res.data.coordenador;

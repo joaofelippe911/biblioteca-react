@@ -2,32 +2,38 @@
 
 import axios from "axios";
 import { useRouter } from "next/navigation"
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-interface interProps {
-    dados: Array<{ id: number, nome: string, coordenador: string, duracao: number }>
+interface interCurso {
+    "id": number;
+    "nome": string;
+    "coordenador": string;
+    "duracao": number;
 }
 
-export default function PageCurso(props: interProps) {
+export default function PageCurso() {
+    const [cursos, setCursos] = useState<interCurso[]>([])
 
     const router = useRouter();
 
-    const [dados, setDados] = useState<Array<{
-        id: number,
-        nome: string,
-        coordenador: string, 
-        duracao: number
-    }
-    >>(props.dados)
-
     const excluirCurso = useCallback((id: number) => {
-        axios.delete('http://localhost:8000/api/cursos/'+id)
+        axios.delete('http://127.0.0.1:8000/api/cursos/'+id)
         .then((res) => {
-            setDados(prevState => prevState.filter((curso) => curso.id !== id));
+            setCursos(prevState => prevState.filter((curso) => curso.id !== id));
         }).catch((err) => {
             console.log(err);
         })
     }, [])
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/cursos')
+            .then((res) => {
+                setCursos(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, []);
 
     return (
         <>
@@ -56,7 +62,7 @@ export default function PageCurso(props: interProps) {
                 </thead>
                 <tbody>
                     {
-                        dados.map((element) => {
+                        cursos.map((element) => {
                             return (
                                 <tr key={element.id}>
                                     <td>

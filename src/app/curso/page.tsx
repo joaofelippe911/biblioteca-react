@@ -22,21 +22,12 @@ export default async function Curso() {
         redirect('/login')
     }
 
-    let curso: { data: Array<interCurso> } = { data: [] }
-
-    try {
-        curso = await axios.get('http://127.0.0.1:8000/api/cursos');
-    } catch (error) {
-        console.log({error})
-    }
-
-
     return (
         <LayoutDashboard
             active='curso'
             token={token.value}
         >
-            <PageCurso dados={curso.data} />
+            <PageCurso/>
         </LayoutDashboard>
     )
 }
