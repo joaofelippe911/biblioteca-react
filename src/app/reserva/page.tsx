@@ -3,54 +3,29 @@ import { useEffect, useState } from 'react';
 import ReservaUpdate from './update';
 import ReservaDelete from './delete';
 import ReservaCreate from './create';
+import { verificaTokenExpirou } from '@/services/Token';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { LayoutDashboard } from '@/components/LayoutDashboard';
+import PageReserva from '@/components/PageReserva';
 
-const ReservaPage = () => {
-  // const [Reservas, setReservas] = useState([]);
+const Reserva = () => {
+  const cookie = cookies();
 
-  // useEffect(() => {
-  //   const fetchReservas = async () => {
-  //     try {
-  //       const response = await axios.get('http://127.0.0.1:8000/api/Reservas');
-  //       // setReservas(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
+  const token = cookie.get('biblioteca-react.token');
 
-  //   fetchReservas();
-  // }, []);
+  if (!token?.value || verificaTokenExpirou(token.value)) {
+      redirect('/login');
+  }
 
   return (
-    <div>
-      {/* <h1>Reservas</h1>
-
-      <h2>Lista de Reservas</h2>
-      <ul>
-        {Reservas.map((Reserva: any) => (
-          <li key={Reserva.id}>
-            Título: {Reserva.titulo} | Autor: {Reserva.autor}
-          </li>
-        ))}
-      </ul>
-
-      <h2>Criar Reserva</h2>
-      <ReservaCreate />
-
-      <h2>Atualizar Reserva</h2>
-      {Reservas.map((Reserva: any) => (
-        <div key={Reserva.id}>
-          <ReservaUpdate Reserva={Reserva} />
-        </div>
-      ))}
-
-      <h2>Excluir Reserva</h2>
-      {Reservas.map((Reserva: any) => (
-        <div key={Reserva.id}>
-          <ReservaDelete Reserva={Reserva} />
-        </div>
-      ))} */}
-    </div>
-  );
+    <LayoutDashboard
+        active='reserva'
+        token={token.value}
+    >
+        <PageReserva/>
+    </LayoutDashboard>
+)
 };
 
-export default ReservaPage;
+export default Reserva;

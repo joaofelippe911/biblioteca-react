@@ -36,7 +36,7 @@ export default async function Autor() {
 
     return (
         <LayoutDashboard
-            active='editora'
+            active='autor'
             token={token.value}
         >
             <PageAutor dados={autor.data} />

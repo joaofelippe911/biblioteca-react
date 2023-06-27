@@ -3,54 +3,29 @@ import { useEffect, useState } from 'react';
 import LivroUpdate from './update';
 import LivroDelete from './delete';
 import LivroCreate from './create';
+import { verificaTokenExpirou } from '@/services/Token';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import { LayoutDashboard } from '@/components/LayoutDashboard';
+import PageLivro from '@/components/PageLivro';
 
-const LivroPage = () => {
-  // const [livros, setLivros] = useState([]);
+const Livro = () => {
+  const cookie = cookies();
 
-  // useEffect(() => {
-  //   const fetchLivros = async () => {
-  //     try {
-  //       const response = await axios.get('http://127.0.0.1:8000/api/livros');
-  //       // setLivros(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
+  const token = cookie.get('biblioteca-react.token')
 
-  //   fetchLivros();
-  // }, []);
-
+  if (!token?.value || verificaTokenExpirou(token.value)) {
+      redirect('/login')
+  }
+  
   return (
-    <div>
-      {/* <h1>Livros</h1>
-
-      <h2>Lista de Livros</h2>
-      <ul>
-        {livros.map((livro: any) => (
-          <li key={livro.id}>
-            Título: {livro.titulo} | Autor: {livro.autor}
-          </li>
-        ))}
-      </ul>
-
-      <h2>Criar Livro</h2>
-      <LivroCreate />
-
-      <h2>Atualizar Livro</h2>
-      {livros.map((livro: any) => (
-        <div key={livro.id}>
-          <LivroUpdate livro={livro} />
-        </div>
-      ))}
-
-      <h2>Excluir Livro</h2>
-      {livros.map((livro: any) => (
-        <div key={livro.id}>
-          <LivroDelete livro={livro} />
-        </div>
-      ))} */}
-    </div>
-  );
+    <LayoutDashboard
+        active='livro'
+        token={token.value}
+    >
+        <PageLivro/>
+    </LayoutDashboard>
+)
 };
 
-export default LivroPage;
+export default Livro;

@@ -20,7 +20,7 @@ export default function PageLivro() {
   const router = useRouter();
 
   const excluirLivro = useCallback((id: number) => {
-    axios.delete('http://127.0.0.1:8000/api/cursos/'+id)
+    axios.delete('http://127.0.0.1:8000/api/livros/'+id)
       .then((_res) => {
         setLivros((prevState) => prevState.filter((livro) => livro.id !== id));
       })
