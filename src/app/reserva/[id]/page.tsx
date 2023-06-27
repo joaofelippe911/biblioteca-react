@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { LayoutDashboard } from '@/components/LayoutDashboard';
 import { verificaTokenExpirou } from '@/services/Token';
 import { redirect } from 'next/navigation';
-import PageFormReserva from '@/components/PageFormCategoria';
+import PageFormReserva from '@/components/PageFormReserva';
 
 export default async function AddReserva({ params }: any) {
   const cookie = cookies();

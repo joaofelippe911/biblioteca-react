@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { LayoutDashboard } from '@/components/LayoutDashboard';
 import { verificaTokenExpirou } from '@/services/Token';
 import { redirect } from 'next/navigation';
-import PageFormLivro from '@/components/PageFormCategoria';
+import PageFormLivro from '@/components/PageFormLivro';
 
 export default async function AddLivro({ params }: any) {
   const cookie = cookies();
