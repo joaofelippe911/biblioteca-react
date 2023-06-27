@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
-import { useRouter } from 'next/router';
+import axios from "axios";
+import { useRouter } from "next/navigation"
+import { useCallback, useEffect, useState } from "react";
 
 interface interLivro {
   id: number;
@@ -20,13 +20,12 @@ export default function PageLivro() {
   const router = useRouter();
 
   const excluirLivro = useCallback((id: number) => {
-    axios
-      .delete(`http://127.0.0.1:8000/api/livros/${id}`)
-      .then(() => {
-        setLivros((prevLivros) => prevLivros.filter((livro) => livro.id !== id));
+    axios.delete('http://127.0.0.1:8000/api/cursos/'+id)
+      .then((_res) => {
+        setLivros((prevState) => prevState.filter((livro) => livro.id !== id));
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
@@ -62,31 +61,19 @@ export default function PageLivro() {
           <tr>
             <th>ID</th>
             <th>Título</th>
-            <th>Subtítulo</th>
-            <th>ISBN</th>
-            <th>Autor</th>
-            <th>Editora</th>
-            <th>Local</th>
-            <th>Ano</th>
           </tr>
         </thead>
         <tbody>
-          {livros.map((livro) => (
-            <tr key={livro.id}>
-              <td>{livro.id}</td>
-              <td>{livro.titulo}</td>
-              <td>{livro.subtitulo}</td>
-              <td>{livro.isbn}</td>
-              <td>{livro.autor}</td>
-              <td>{livro.editora}</td>
-              <td>{livro.local}</td>
-              <td>{livro.ano}</td>
+          {livros.map((element) => (
+            <tr key={element.id}>
+              <td>{element.id}</td>
+              <td>{element.titulo}</td>
               <td>
                 <button
                   className="btn btn-primary"
                   type="button"
                   onClick={() => {
-                    router.push(`/livro/${livro.id}`);
+                    router.push(`/livros/${element.id}`);
                   }}
                 >
                   Editar
@@ -95,7 +82,7 @@ export default function PageLivro() {
                   className="btn btn-danger"
                   type="button"
                   onClick={() => {
-                    excluirLivro(livro.id);
+                    excluirLivro(element.id);
                   }}
                 >
                   Excluir
