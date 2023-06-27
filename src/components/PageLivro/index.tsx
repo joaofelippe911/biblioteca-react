@@ -17,6 +17,7 @@ interface interLivro {
 
 export default function PageLivro() {
   const [livros, setLivros] = useState<interLivro[]>([]);
+
   const router = useRouter();
 
   const excluirLivro = useCallback((id: number) => {
@@ -73,7 +74,7 @@ export default function PageLivro() {
                   className="btn btn-primary"
                   type="button"
                   onClick={() => {
-                    router.push(`/livros/${element.id}`);
+                    router.push(`/livro/${element.id}`);
                   }}
                 >
                   Editar

@@ -2,36 +2,38 @@
 
 import axios from "axios";
 import { useRouter } from "next/navigation"
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-interface interProps {
-    dados: Array<{ id: number, 
-        nome: string, 
-        endereco: string, 
-        cidade: string, uf: string, 
-        telefone: number }>
+interface interfEditora {
+    "id": number;
+    "nome": string;
+    "endereco": string;
+    "cidade": string;
+    "uf": string;
+    "telefone": string;
 }
 
-export default function PageEditora(props: interProps) {
+export default function PageEditora() {
+    const [editoras, setEditoras] = useState<interfEditora[]>([]);
 
     const router = useRouter();
-
-    const [dados, setDados] = useState<Array<{
-        id: number,
-        nome: string,
-        endereco: string, 
-        cidade: string,
-        uf: string,
-        telefone: number,
-    }
-    >>(props.dados)
 
     const excluirEditora = useCallback((id: number) => {
         axios.delete('http://localhost:8000/api/editoras/'+id)
         .then((res) => {
-            
+            setEditoras(prevState => prevState.filter((editora) => editora.id !== id));
         })
     }, [])
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/editoras')
+            .then((res) => {
+                setEditoras(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, []);
 
     return (
         <>
@@ -60,7 +62,7 @@ export default function PageEditora(props: interProps) {
                 </thead>
                 <tbody>
                     {
-                        dados.map((element) => {
+                        editoras.map((element) => {
                             return (
                                 <tr>
                                     <td>
