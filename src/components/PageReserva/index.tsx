@@ -4,17 +4,39 @@ import axios from "axios";
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useState } from "react";
 
-interface interReserva {
+interface interfAluno {
     "id": number;
-    "reserva": string;
-    "livro": string;
+    "ra": number;
+    "nome": string;
+    "endereco": string;
+    "cidade": string;
+    "uf": string;
+    "telefone": string;
+    "curso": string;
+}
+
+interface interfLivro {
+    id: number;
+    titulo: string;
+    subtitulo: string;
+    isbn: string;
+    autor: string;
+    editora: string;
+    local: string;
+    ano: number;
+  }
+
+interface interfReserva {
+    "id": number;
+    "aluno": interfAluno;
+    "livro": interfLivro;
     "dataInicio": string;
     "dataFim": string;
     "observacao": string;
   }
 
 export default function PageReserva() {
-    const [reservas, setReservas] = useState<interReserva[]>([])
+    const [reservas, setReservas] = useState<interfReserva[]>([])
 
     const router = useRouter();
 
@@ -61,7 +83,8 @@ export default function PageReserva() {
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nome</th>
+                        <th>Aluno</th>
+                        <th>Livro</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,7 +96,10 @@ export default function PageReserva() {
                                         {element.id}
                                     </td>
                                     <td>
-                                        {element.id}
+                                        {element.aluno.nome}
+                                    </td>
+                                    <td>
+                                        {element.livro.titulo}
                                     </td>
                                     <td>
                                         <button
