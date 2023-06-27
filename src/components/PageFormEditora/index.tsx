@@ -28,7 +28,8 @@ export default function PageFormEditora(props: interProps) {
                     refForm.current['nome'].value = res.data.nome;
                     refForm.current['endereco'].value = res.data.endereco;
                     refForm.current['cidade'].value = res.data.cidade;
-                    refForm.current['uf'].value = res.data.telefone;
+                    refForm.current['uf'].value = res.data.uf;
+                    refForm.current['telefone'].value = res.data.telefone;
                 }
             )
         }
@@ -58,7 +59,7 @@ export default function PageFormEditora(props: interProps) {
                 telefone: refForm.current['telefone'].value
             }
 
-            axios.post('http://127.0.0.1:8000/api/editora', objSalvar).then((res) => {
+            axios.post('http://127.0.0.1:8000/api/editoras', objSalvar).then((res) => {
                 router.push('/editora')
             })
         }

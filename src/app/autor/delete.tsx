@@ -23,12 +23,12 @@ export default function Delete() {
   const router = useRouter();
 
   useEffect(() => {
-    getAutor();
+    getAutores();
   }, []);
 
-  const getAutor = async () => {
+  const getAutores = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/autor');
+      const response = await axios.get('http://127.0.0.1:8000/api/autores');
       setAutor(response.data);
     } catch (error) {
       console.error(error);
@@ -39,7 +39,7 @@ export default function Delete() {
     e.preventDefault();
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/autor', {
+      await axios.post('http://127.0.0.1:8000/api/autores', {
         nome,
         endereco,
         cidade,
@@ -54,8 +54,8 @@ export default function Delete() {
 
   const handleDelete = async (id: any) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/autor/${id}`);
-      getAutor();
+      await axios.delete(`http://127.0.0.1:8000/api/autores/${id}`);
+      getAutores();
     } catch (error) {
       console.error(error);
     }

@@ -14,7 +14,7 @@ export default function Create() {
     e.preventDefault();
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/autor', {
+      await axios.post('http://127.0.0.1:8000/api/autores', {
         name,
         endereco,
         cidade,

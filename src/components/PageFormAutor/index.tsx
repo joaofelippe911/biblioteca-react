@@ -22,13 +22,14 @@ export default function PageFormAutor(props: interProps) {
 
         if (Number.isInteger(idQuery)) {
             setEditar(true)
-            axios.get('http://127.0.0.1:8000/api/autor/' + idQuery).then(
+            axios.get('http://127.0.0.1:8000/api/autores/' + idQuery).then(
                 (res) => {
                     refForm.current['id'].value = res.data.id;
                     refForm.current['nome'].value = res.data.nome;
                     refForm.current['endereco'].value = res.data.endereco;
                     refForm.current['cidade'].value = res.data.cidade;
-                    refForm.current['uf'].value = res.data.telefone;
+                    refForm.current['uf'].value = res.data.uf;
+                    refForm.current['telefone'].value = res.data.telefone;
                 }
             )
         }
@@ -45,7 +46,7 @@ export default function PageFormAutor(props: interProps) {
                 telefone: refForm.current['telefone'].value
             }
 
-            axios.put('http://127.0.0.1:8000/api/autor/'+refForm.current['id'].value, objSalvar).then((res) => {
+            axios.put('http://127.0.0.1:8000/api/autores/'+refForm.current['id'].value, objSalvar).then((res) => {
                 router.push('/autor')
             })
 
@@ -58,7 +59,7 @@ export default function PageFormAutor(props: interProps) {
                 telefone: refForm.current['telefone'].value
             }
 
-            axios.post('http://127.0.0.1:8000/api/autor', objSalvar).then((res) => {
+            axios.post('http://127.0.0.1:8000/api/autores', objSalvar).then((res) => {
                 router.push('/autor')
             })
         }
@@ -97,33 +98,33 @@ export default function PageFormAutor(props: interProps) {
                         <></>
                 }
 
-                <Form.Group>
+                <Form.Group className='mb-4'>
                     <Form.Label>
                         Nome
                     </Form.Label>
                     <Form.Control type="text" id="nome" name="nome" />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='mb-4'>
                     <Form.Label>
                         Endereço
                     </Form.Label>
                     <Form.Control type="text" id="endereco" name="endereco" />
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='mb-4'>
                     <Form.Label>
                         Cidade
                     </Form.Label>
                     <Form.Control type="text" id="cidade" name="cidade" />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className='mb-4'>
                     <Form.Label>
                         UF
                     </Form.Label>
                     <Form.Control type="text" id="uf" name="uf" />
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className='mb-4'>
                     <Form.Label>
                         Telefone
                     </Form.Label>
