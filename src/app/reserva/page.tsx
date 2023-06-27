@@ -1,8 +1,3 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import ReservaUpdate from './update';
-import ReservaDelete from './delete';
-import ReservaCreate from './create';
 import { verificaTokenExpirou } from '@/services/Token';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';

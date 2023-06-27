@@ -2,7 +2,6 @@ import { cookies } from 'next/headers'
 import { LayoutDashboard } from "@/components/LayoutDashboard";
 import { verificaTokenExpirou } from '@/services/Token';
 import { redirect } from 'next/navigation';
-import axios from 'axios';
 import PageCurso from '@/components/PageCurso';
 
 

@@ -27,7 +27,7 @@ export default function PageAutor(props: interProps) {
     >>(props.dados)
 
     const excluirAutor = useCallback((id: number) => {
-        axios.delete('http://localhost:8000/api/autores/'+id)
+        axios.delete('http://localhost:8000/api/autors/'+id)
         .then((res) => {
             
         })
