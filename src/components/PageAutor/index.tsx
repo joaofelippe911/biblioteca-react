@@ -2,36 +2,41 @@
 
 import axios from "axios";
 import { useRouter } from "next/navigation"
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-interface interProps {
-    dados: Array<{ id: number, 
-        nome: string, 
-        endereco: string, 
-        cidade: string, uf: string, 
-        telefone: number }>
+interface interfAutor {
+    "id": number;
+    "nome": string;
+    "endereco": string;
+    "cidade": string;
+    "uf": string;
+    "telefone": string;
 }
 
-export default function PageAutor(props: interProps) {
+export default function PageAutor() {
+    const [autores, setAutores] = useState<interfAutor[]>([]);
 
     const router = useRouter();
 
-    const [dados, setDados] = useState<Array<{
-        id: number,
-        nome: string,
-        endereco: string, 
-        cidade: string,
-        uf: string,
-        telefone: number,
-    }
-    >>(props.dados)
-
     const excluirAutor = useCallback((id: number) => {
-        axios.delete('http://localhost:8000/api/autors/'+id)
+        axios.delete('http://localhost:8000/api/autores/'+id)
         .then((res) => {
-            
+            setAutores(prevState => prevState.filter((autor) => autor.id !== id));
+        })
+        .catch((err) => {
+            console.log(err);
         })
     }, [])
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/api/autores')
+            .then((res) => {
+                setAutores(res.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, []);
 
     return (
         <>
@@ -60,7 +65,7 @@ export default function PageAutor(props: interProps) {
                 </thead>
                 <tbody>
                     {
-                        dados.map((element) => {
+                        autores.map((element) => {
                             return (
                                 <tr>
                                     <td>
