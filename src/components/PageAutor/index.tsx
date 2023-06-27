@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useState } from "react";
+import Table from 'react-bootstrap/Table';
 
 interface interfAutor {
     "id": number;
@@ -41,7 +42,7 @@ export default function PageAutor() {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Autor</h1>
                 <div>
@@ -56,11 +57,13 @@ export default function PageAutor() {
                     </button>
                 </div>
             </div>
-            <table>
+            <Table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,6 +76,9 @@ export default function PageAutor() {
                                     </td>
                                     <td>
                                         {element.nome}
+                                    </td>
+                                    <td>
+                                        {element.telefone}
                                     </td>
                                     <td>
                                         <button
@@ -99,7 +105,7 @@ export default function PageAutor() {
                         })
                     }
                 </tbody>
-            </table>
+            </Table>
 
         </>
     )

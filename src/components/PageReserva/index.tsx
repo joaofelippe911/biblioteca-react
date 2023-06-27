@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useState } from "react";
+import Table from 'react-bootstrap/Table';
 
 interface interfAluno {
     "id": number;
@@ -64,7 +65,7 @@ export default function PageReserva() {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Reserva</h1>
                 <div>
@@ -79,12 +80,15 @@ export default function PageReserva() {
                     </button>
                 </div>
             </div>
-            <table>
+            <Table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Aluno</th>
                         <th>Livro</th>
+                        <th>Data Início</th>
+                        <th>Data Fim</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,6 +104,12 @@ export default function PageReserva() {
                                     </td>
                                     <td>
                                         {element.livro.titulo}
+                                    </td>
+                                    <td>
+                                        {element.dataInicio}
+                                    </td>
+                                    <td>
+                                        {element.dataFim}
                                     </td>
                                     <td>
                                         <button
@@ -126,7 +136,7 @@ export default function PageReserva() {
                         })
                     }
                 </tbody>
-            </table>
+            </Table>
 
         </>
     )

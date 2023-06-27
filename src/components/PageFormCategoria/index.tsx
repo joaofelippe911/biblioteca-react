@@ -60,7 +60,7 @@ export default function PageFormCategoria(props: interProps) {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Categoria</h1>
                 <div>

@@ -68,7 +68,7 @@ export default function PageFormAutor(props: interProps) {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Autor</h1>
                 <div>

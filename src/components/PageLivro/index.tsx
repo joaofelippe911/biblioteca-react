@@ -4,13 +4,33 @@ import axios from "axios";
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useState } from "react";
 
+import Table from 'react-bootstrap/Table';
+
+interface interfEditora {
+  "id": number;
+  "nome": string;
+  "endereco": string;
+  "cidade": string;
+  "uf": string;
+  "telefone": string;
+}
+
+interface interfAutor {
+  "id": number;
+  "nome": string;
+  "endereco": string;
+  "cidade": string;
+  "uf": string;
+  "telefone": string;
+}
+
 interface interLivro {
   id: number;
   titulo: string;
   subtitulo: string;
   isbn: string;
-  autor: string;
-  editora: string;
+  autor: interfAutor;
+  editora: interfEditora;
   local: string;
   ano: number;
 }
@@ -43,7 +63,7 @@ export default function PageLivro() {
 
   return (
     <>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between align-items-center">
         <h1>Livro</h1>
         <div>
           <button
@@ -57,11 +77,16 @@ export default function PageLivro() {
           </button>
         </div>
       </div>
-      <table>
+      <Table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Título</th>
+            <th>Autor</th>
+            <th>Editora</th>
+            <th>ISBN</th>
+            <th>Ano</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -69,6 +94,10 @@ export default function PageLivro() {
             <tr key={element.id}>
               <td>{element.id}</td>
               <td>{element.titulo}</td>
+              <td>{element.autor.nome}</td>
+              <td>{element.editora.nome}</td>
+              <td>{element.isbn}</td>
+              <td>{element.ano}</td>
               <td>
                 <button
                   className="btn btn-primary"
@@ -92,7 +121,7 @@ export default function PageLivro() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </>
   );
 }

@@ -24,7 +24,7 @@ export default function PageUsuarios(props: interProps) {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Usuarios</h1>
                 <div>
@@ -44,6 +44,7 @@ export default function PageUsuarios(props: interProps) {
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>

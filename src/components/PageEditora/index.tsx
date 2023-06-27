@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useState } from "react";
+import Table from 'react-bootstrap/Table';
 
 interface interfEditora {
     "id": number;
@@ -38,7 +39,7 @@ export default function PageEditora() {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Editora</h1>
                 <div>
@@ -53,11 +54,13 @@ export default function PageEditora() {
                     </button>
                 </div>
             </div>
-            <table>
+            <Table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,6 +73,9 @@ export default function PageEditora() {
                                     </td>
                                     <td>
                                         {element.nome}
+                                    </td>
+                                    <td>
+                                        {element.telefone}
                                     </td>
                                     <td>
                                         <button
@@ -96,7 +102,7 @@ export default function PageEditora() {
                         })
                     }
                 </tbody>
-            </table>
+            </Table>
 
         </>
     )

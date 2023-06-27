@@ -3,6 +3,14 @@
 import axios from "axios";
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useState } from "react";
+import Table from 'react-bootstrap/Table';
+
+interface interCurso {
+    "id": number;
+    "nome": string;
+    "coordenador": string;
+    "duracao": number;
+}
 
 interface interAluno {
     "id": number;
@@ -12,7 +20,7 @@ interface interAluno {
     "cidade": string;
     "uf": string;
     "telefone": string;
-    "curso": string;
+    "curso": interCurso;
 }
 
 export default function PageAluno() {
@@ -44,7 +52,7 @@ export default function PageAluno() {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Aluno</h1>
                 <div>
@@ -59,11 +67,15 @@ export default function PageAluno() {
                     </button>
                 </div>
             </div>
-            <table>
+            <Table>
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>RA</th>
                         <th>Nome</th>
+                        <th>Curso</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -75,7 +87,16 @@ export default function PageAluno() {
                                         {element.id}
                                     </td>
                                     <td>
+                                        {element.ra}
+                                    </td>
+                                    <td>
                                         {element.nome}
+                                    </td>
+                                    <td>
+                                        {element.curso.nome}
+                                    </td>
+                                    <td>
+                                        {element.telefone}
                                     </td>
                                     <td>
                                         <button
@@ -102,7 +123,7 @@ export default function PageAluno() {
                         })
                     }
                 </tbody>
-            </table>
+            </Table>
 
         </>
     )

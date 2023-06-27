@@ -16,7 +16,7 @@ export const LayoutDashboard = (props: interfProps) => {
             >
                 <a className="navbar-brand col-md-3 col-lg-2 me-0 px-3"
                     href="#">
-                    Sistema Autenticação
+                    Biblioteca - Painel
                 </a>
                 <button
                     className="navbar-toggler position-absolute d-md-none collapsed"
@@ -46,15 +46,6 @@ export const LayoutDashboard = (props: interfProps) => {
                     >
                         <div className="position-sticky pt-3">
                             <ul className="nav flex-column">
-                                <li className="nav-item">
-                                    <Link
-                                        className={`nav-link ${props.active === 'dashboard' && 'active'}`}
-                                        href={'/dashboard'}
-                                    >
-                                        <span data-feather="home"></span>
-                                        Dashboard
-                                    </Link>
-                                </li>
                                
                                 <li className="nav-item">
                                     <Link

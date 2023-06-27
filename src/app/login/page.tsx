@@ -42,7 +42,7 @@ export default function Login() {
                         }
                     )
 
-                    router.push('/dashboard')
+                    router.push('/reserva')
 
                     setLoading(false)
                 })

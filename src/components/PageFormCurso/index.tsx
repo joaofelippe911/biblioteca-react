@@ -62,7 +62,7 @@ export default function PageFormCurso(props: interProps) {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Curso</h1>
                 <div>

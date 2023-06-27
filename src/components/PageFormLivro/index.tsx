@@ -116,7 +116,7 @@ export default function PageFormLivro(props: PageFormLivroProps) {
 
   return (
     <>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between align-items-center">
         <h1>{editar ? 'Editar Livro' : 'Criar Livro'}</h1>
         <div>
           <button type="button" className="btn btn-success" onClick={addOrEditLivro}>

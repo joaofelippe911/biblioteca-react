@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useState } from "react";
+import Table from 'react-bootstrap/Table';
 
 interface interCurso {
     "id": number;
@@ -38,7 +39,7 @@ export default function PageCurso() {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Curso</h1>
                 <div>
@@ -53,11 +54,14 @@ export default function PageCurso() {
                     </button>
                 </div>
             </div>
-            <table>
+            <Table>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Coordenador</th>
+                        <th>Duração (semestres)</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,6 +74,12 @@ export default function PageCurso() {
                                     </td>
                                     <td>
                                         {element.nome}
+                                    </td>
+                                    <td>
+                                        {element.coordenador}
+                                    </td>
+                                    <td>
+                                        {element.duracao}
                                     </td>
                                     <td>
                                         <button
@@ -96,7 +106,7 @@ export default function PageCurso() {
                         })
                     }
                 </tbody>
-            </table>
+            </Table>
 
         </>
     )

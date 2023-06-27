@@ -109,7 +109,7 @@ export default function PageFormReserva(props: interProps) {
 
     return (
         <>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between align-items-center">
                 <h1>Reservas</h1>
                 <div>
                     <button

@@ -68,7 +68,7 @@ export default function PageFormEditora(props: interProps) {
     return (
         <>
             <div
-                className="d-flex justify-content-between"
+                className="d-flex justify-content-between align-items-center"
             >
                 <h1>Editoras</h1>
                 <div>
