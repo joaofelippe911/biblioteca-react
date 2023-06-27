@@ -5,31 +5,41 @@ import { redirect } from 'next/navigation';
 import axios from 'axios';
 import PageAutor from '@/components/PageAutor';
 
-//interface interAutor {
-//    "id": number;
-//    "nome": string;
-//  "endereco": string;
-//  "cidade": string;
-//  "uf": string;
- //   "telefone": number;
-//}
+interface interAutor {
+    "id": number;
+    "nome": string;
+    "endereco": string;
+    "cidade": string;
+    "uf": string;
+    "telefone": number;
+}
 
-const AutorPage = () => {
+export default async function Autor() {
+
     const cookie = cookies();
-  
+
     const token = cookie.get('biblioteca-react.token')
-  
+
     if (!token?.value || verificaTokenExpirou(token.value)) {
-      redirect('/login')
+        redirect('/login')
+    }
+
+    let autor: { data: Array<interAutor> } = { data: [] }
+
+    try {
+      autor = await axios.get('http://127.0.0.1:8000/api/autores');
+        console.log({editora: autor})
+    } catch (error) {
+        console.log({error})
     }
 
 
     return (
         <LayoutDashboard
-            active='autor'
+            active='editora'
             token={token.value}
         >
-            <PageAutor dados={[]} />
+            <PageAutor dados={autor.data} />
         </LayoutDashboard>
     )
 }

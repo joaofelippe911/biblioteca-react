@@ -19,7 +19,7 @@ export default function UpdateEditora() {
 
   const getEditora = async (id: string) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/cursos/${id}`);
+      const response = await axios.get(`http://127.0.0.1:8000/api/editoras/${id}`);
       const editora = response.data;
       setNome(editora.nome);
       setEndereco(editora.endereco);

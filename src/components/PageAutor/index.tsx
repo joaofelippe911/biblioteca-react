@@ -2,18 +2,18 @@
 
 import axios from "axios";
 import { useRouter } from "next/navigation"
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 
-interface interProps { dados: Array<{ id: number, 
+interface interProps {
+    dados: Array<{ id: number, 
         nome: string, 
         endereco: string, 
-        cidade: string,
-         uf: string, 
+        cidade: string, uf: string, 
         telefone: number }>
 }
 
-export default function PageAutor(props: interProps){
-    
+export default function PageAutor(props: interProps) {
+
     const router = useRouter();
 
     const [dados, setDados] = useState<Array<{
